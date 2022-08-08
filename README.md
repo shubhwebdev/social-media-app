@@ -1,10 +1,9 @@
-# Getting Started with Create React App
+# Social Media App create with MERN stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+### Please run `npm install` in both client and server directory after cloning the project
 ## Available Scripts
 
-In the project directory, you can run:
+In the project's client directory, you can run:
 
 ### `npm start`
 
