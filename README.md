@@ -2,7 +2,7 @@
 
 ### Please run `npm install` in both client and server directory after cloning the project
 
-## Please follow below steps to work on this project
+## Please follow below metioned process to work on this project
     - No code should be directly written on the `main` branch itself
     - Start working on the feature branches : follow the format `feature-branch/feature-branch-name` (ex: feature-branch/header-updates)
         -- to create a feature branch:
