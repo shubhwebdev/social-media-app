@@ -13,12 +13,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
-
+import isEmailValid from '../../helpers/helperFunctions';
 const theme = createTheme();
 
-const isEmailValid = email => {
-  return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
-}
 
 const SignIn = () => {
 

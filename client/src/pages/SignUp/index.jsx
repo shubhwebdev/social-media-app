@@ -12,17 +12,50 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import isEmailValid from '../../helpers/helperFunctions';
 
 const theme = createTheme();
 
+const specialCharctersCheck = textString => {
+  const specialChars = /^[a-zA-Z]+$/;
+  return specialChars.test(textString)
+}
+
 export default function SignUp() {
+
+  const [error, setError] = useState('')
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email').trim()
+    const password = data.get('password').trim()
+    const fname = data.get('firstName').trim()
+    const lname = data.get('lastName').trim()
+
+    if(email.length === 0 || password.length === 0 || fname.length === 0 || lname.length === 0) {
+      setError('Please add all fields')
+      return;
+    }
+
+    if(!specialCharctersCheck(fname) || !specialCharctersCheck(lname)) {
+      setError('Name cannot consist special charcters')
+      return
+    }
+
+    if(!isEmailValid(email)){
+      setError('Invalid Email')
+      return
+    }
+
+    if(password.length < 6 || password.length > 20){
+      setError('Password length should be atleast 6 characters long and cannot exceed 20 characters')
+      return
+    }
+
+    setError('')
+
   };
 
   return (
@@ -44,6 +77,7 @@ export default function SignUp() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          {error}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
