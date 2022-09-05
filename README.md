@@ -14,3 +14,10 @@
     - Once the code is tested on dev and verified, only then dev should be merged to `main` branch
     - Ideally there should be only one merge a day (one resource can take pull and merge all branches rather than all doing it which may cause conflicts)
     - Code should be reviewed and verified by altest 1 peer developer    
+
+
+## Tech Stack (till now)
+    - React
+    - Mongo DB
+    - Express
+    - Material UI
