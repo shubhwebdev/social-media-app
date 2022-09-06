@@ -2,11 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Avatar,Button,CssBaseline,TextField,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import isEmailValid from '../../helpers/helperFunctions';
-
-const theme = createTheme();
 
 const specialCharctersCheck = textString => {
   const specialChars = /^[a-zA-Z]+$/;
@@ -57,7 +54,6 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -139,6 +135,5 @@ export default function SignUp() {
         </Box>
         
       </Container>
-    </ThemeProvider>
   );
 }

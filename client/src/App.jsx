@@ -1,15 +1,16 @@
+import React from 'react'
 import SiteRoutes from './config/routes';
-import Navigation from './components/Navigation/Navigation'
-import SiteFooter from './components/Footer/SiteFooter';
+import {Navigation, SiteFooter} from './components'
+import { ThemeContextProvider } from './components/store/ui-theme-context';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Navigation/>
-      <SiteRoutes/>
-      <SiteFooter/>
-    </div>
+    <ThemeContextProvider>
+        <Navigation/>
+        <SiteRoutes/>
+        <SiteFooter/>
+    </ThemeContextProvider>
   );
 }
 
-export default App;
+export default App
