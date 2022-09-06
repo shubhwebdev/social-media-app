@@ -1,18 +1,9 @@
-
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
+
+import { Avatar,Button,CssBaseline,TextField,FormControlLabel,Checkbox,Link,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import isEmailValid from '../../helpers/helperFunctions';
 const theme = createTheme();
 
@@ -26,7 +17,7 @@ const SignIn = () => {
     const data = new FormData(event.currentTarget);
     const user_email = data.get('email').trim();
     const user_password = data.get('password').trim();
-    if(user_email.length === 0 || user_password.length ===0){
+    if(user_email.length === 0 || user_password.length === 0){
       setFormError('Please add all fields')
       return
     }
@@ -40,6 +31,7 @@ const SignIn = () => {
       email: user_email,
       password: user_password
     }
+    localStorage.setItem('loginToken','sometesttoken')
     console.log(signInData)
   };
 

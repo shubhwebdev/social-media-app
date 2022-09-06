@@ -3,7 +3,7 @@ import Copyright from "./Copyright"
 const SiteFooter = () => {
   return (
     <footer>
-      <Copyright></Copyright>
+      <Copyright/>
     </footer>
   )
 }
