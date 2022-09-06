@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom"
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+
+import {Button, Typography,Toolbar,Box,AppBar,Person2OutlinedIcon,LoginOutlinedIcon} from './../../config/mui-imports'
 
 const Header = () => {
   return (

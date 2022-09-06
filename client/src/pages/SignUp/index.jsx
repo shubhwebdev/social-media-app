@@ -1,28 +1,59 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { Avatar,Button,CssBaseline,TextField,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import isEmailValid from '../../helpers/helperFunctions';
 
 const theme = createTheme();
 
+const specialCharctersCheck = textString => {
+  const specialChars = /^[a-zA-Z]+$/;
+  return specialChars.test(textString)
+}
+
 export default function SignUp() {
+
+  const [error, setError] = useState('')
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email').trim()
+    const password = data.get('password').trim()
+    const fname = data.get('firstName').trim()
+    const lname = data.get('lastName').trim()
+
+    if(email.length === 0 || password.length === 0 || fname.length === 0 || lname.length === 0) {
+      setError('Please add all fields')
+      return;
+    }
+
+    if(!specialCharctersCheck(fname) || !specialCharctersCheck(lname)) {
+      setError('Name cannot consist special charcters')
+      return
+    }
+
+    if(!isEmailValid(email)){
+      setError('Invalid Email')
+      return
+    }
+
+    if(password.length < 6 || password.length > 20){
+      setError('Password length should be atleast 6 characters long and cannot exceed 20 characters')
+      return
+    }
+
+    setError('')
+    const formData = {
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password
+    }
+    console.log(formData)
+
   };
 
   return (
@@ -44,6 +75,7 @@ export default function SignUp() {
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          {error}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -87,12 +119,6 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -104,7 +130,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/signin">
                   Already have an account? Sign in
                 </Link>
               </Grid>
