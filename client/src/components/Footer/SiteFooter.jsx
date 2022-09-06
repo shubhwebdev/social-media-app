@@ -1,4 +1,5 @@
 import Copyright from "./Copyright"
+import './Footer.css'
 
 const SiteFooter = () => {
   return (

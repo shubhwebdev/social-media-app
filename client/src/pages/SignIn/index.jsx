@@ -2,10 +2,7 @@ import { useState } from 'react';
 
 import { Avatar,Button,CssBaseline,TextField,FormControlLabel,Checkbox,Link,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import isEmailValid from '../../helpers/helperFunctions';
-const theme = createTheme();
 
 
 const SignIn = () => {
@@ -36,7 +33,6 @@ const SignIn = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -102,7 +98,6 @@ const SignIn = () => {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
 
