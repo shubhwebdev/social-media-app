@@ -1,14 +1,11 @@
 import { useState } from 'react';
-
 import { Avatar,Button,CssBaseline,TextField,FormControlLabel,Checkbox,Link,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
-
 import isEmailValid from '../../helpers/helperFunctions';
 
 
 const SignIn = () => {
 
   const [formError,setFormError] = useState('');
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
