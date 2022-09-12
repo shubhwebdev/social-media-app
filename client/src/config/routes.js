@@ -2,7 +2,6 @@ import React from 'react'
 import {Routes,Route} from 'react-router-dom'
 import SignIn from './../pages/SignIn'
 import SignUp from './../pages/SignUp'
-import Home from './../pages/Home/Home'
 
 const site_routes = props => {
   return (
@@ -10,7 +9,7 @@ const site_routes = props => {
       <Routes>
           <Route path="/signin" element={<SignIn/>}></Route>
           <Route path="/signup" element={<SignUp/>}></Route>
-          <Route path="/" element={<Home/>}></Route>
+          <Route path="/" element={<SignIn/>}></Route>
       </Routes>
     </React.Fragment>
   )

@@ -1,0 +1,16 @@
+
+.backshadow {
+  position: relative;
+}
+
+.backshadow::before {
+  height: 100%;
+  width: 100%;
+  content: '';
+  position: absolute;
+  background: #B399C8;
+  top: -1rem;
+  left: 1rem;
+  border-radius: 10px;
+  z-index: -1;
+}

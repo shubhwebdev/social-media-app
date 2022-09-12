@@ -25,7 +25,16 @@ export const ThemeContextProvider = props => {
       createTheme({
         palette: {
           mode,
+          primary : {
+            main: '#B399C8',
+          },
+          secondary: {
+            main: '#61B2E4'
+          }
         },
+        typography : {
+          fontFamily: ['Poppins','sans-serif'].join(',')
+        }
       }),
     [mode],
   );

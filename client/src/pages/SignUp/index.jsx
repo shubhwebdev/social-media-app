@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {Grid} from '@mui/material';
+import {Link} from '@mui/material';
 
-import { Avatar,Button,CssBaseline,TextField,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
+import { Button,CssBaseline,TextField,Box,Typography } from './../../config/mui-imports';
 
 import isEmailValid from '../../helpers/helperFunctions';
+import { Container } from '@mui/system';
 
 const specialCharctersCheck = textString => {
   const specialChars = /^[a-zA-Z]+$/;
@@ -65,20 +68,29 @@ export default function SignUp() {
   },[userData])
 
   return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
+    <Container>
+      <CssBaseline />
+        <Grid container spacing={2} sx={{alignItems: 'center'}}>
+          <Grid item md={7} pr={7}>
+            <Typography variant='h3' component="h1" sx={{fontWeight: 700}}>
+            Connect and Share <Typography variant='h3' component="h1" sx={{fontWeight: 700,color: 'primary.main',display:'inline'}}>moments</Typography> with your loved ones
+            </Typography>
+          </Grid>
+          <Grid item md={5}>
+          <Box
+          className='backshadow primary'
           sx={{
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            border: '2px solid',
+            borderColor: 'secondary.main',
+            padding: '2.8rem',
+            borderRadius: '0.8rem',
+            backgroundColor: 'white'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{fontWeight: 700}}>
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -137,14 +149,18 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/signin">
+                <Link component={RouterLink} to="/signin">
                   Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
+          </Grid>
+        </Grid>
+    </Container>
         
-      </Container>
+        
+
   );
 }
