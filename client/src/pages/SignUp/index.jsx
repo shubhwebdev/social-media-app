@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Avatar,Button,CssBaseline,TextField,Grid,Box,LockOutlinedIcon,Typography,Container } from './../../config/mui-imports';
@@ -13,6 +13,7 @@ const specialCharctersCheck = textString => {
 export default function SignUp() {
 
   const [error, setError] = useState('')
+  const [userData, setUserData] = useState(null)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,15 +44,25 @@ export default function SignUp() {
     }
 
     setError('')
-    const formData = {
+    setUserData({
       fname: fname,
       lname: lname,
       email: email,
       password: password
-    }
-    console.log(formData)
+    })
 
   };
+
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'React POST Request Example' })
+  };
+  fetch('https://reqres.in/api/articles', requestOptions)
+      .then(response => response.json())
+      .then(data => userData);
+  },[userData])
 
   return (
       <Container component="main" maxWidth="xs">
