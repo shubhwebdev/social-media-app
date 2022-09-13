@@ -1,15 +1,16 @@
 import React from 'react'
 import SiteRoutes from './config/routes';
 import {Navigation, SiteFooter} from './components'
-import { ThemeContextProvider } from './components/store/ui-theme-context';
+import { ThemeProvider } from '@mui/material';
+import {theme} from './config/mui-config.js'
 
 const App = () => {
   return (
-    <ThemeContextProvider>
+    <ThemeProvider theme={theme}>
         <Navigation/>
         <SiteRoutes/>
         <SiteFooter/>
-    </ThemeContextProvider>
+    </ThemeProvider>
   );
 }
 
