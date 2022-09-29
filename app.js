@@ -14,6 +14,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
+const postRouter = require('./routes/post')
 //db connection
 mongoose
   .connect(process.env.DATABASE, {
@@ -37,6 +38,7 @@ app.use(expressValidator());
 //routes
 app.use("/api", authRouter);
 app.use("/api", userRouter);
+app.use("/posts", postRouter);
 /* app.get("/", (req, res) => {
   res.send("Hello from Node");
 }); */

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import PostFormModal from "../Post/PostFormModal";
 
 const Header = () => {
   const location = useLocation();
@@ -39,8 +40,10 @@ const Header = () => {
 
   const brandName = "Moments";
 
+
   return (
-    <AppBar
+    <>
+      <AppBar
       sx={{ backgroundColor: "white", boxShadow: "none" }}
       position="static"
     >
@@ -64,12 +67,16 @@ const Header = () => {
             {brandName.toUpperCase()}
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 'auto' }}>
             {headerBtn}
+            <PostFormModal />
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
+    
+    </>
+    
   );
 };
 

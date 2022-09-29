@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Grid,Link,CssBaseline,Box,Typography,TextField,Button,FormControlLabel,Checkbox } from "@mui/material";
 import isEmailValid from "../../helpers/helperFunctions";
 import {Link as RouterLink} from  'react-router-dom'
+import axios from 'axios'
 
 const SignIn = () => {
   const [formError, setFormError] = useState("");
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const user_email = data.get("email").trim();
@@ -24,8 +25,9 @@ const SignIn = () => {
       email: user_email,
       password: user_password,
     };
-    localStorage.setItem("loginToken", "sometesttoken");
-    console.log(signInData);
+    
+    axios.post('/signin',signInData).then(response=> console.log(response)).catch(error=>console.log(error))
+
   };
 
   return (

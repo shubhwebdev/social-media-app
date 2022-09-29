@@ -1,5 +1,5 @@
 import './Home.css'
-import {Box,CssBaseline} from './../../config/mui-imports'
+import {Box,CssBaseline} from '@mui/material'
 
 const Home = props => {
   return <Box sx={{ flexGrow: 1 }}>
